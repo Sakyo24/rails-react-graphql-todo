@@ -51,7 +51,7 @@ $ bundle install
 
 テーブルの作成
 ```
-$ bundle exec rails db:migrate
+$ bundle exec ridgepole --config config/database.yml --env development --file db/Schemafile --apply
 ```
 
 シーダーの実行
