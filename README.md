@@ -9,6 +9,7 @@ Ruby on Rails × React × GraphQL TODOアプリ<br>
 - TypeScript
 - React 18
 - MySQL 8.0
+- Tailwind CSS 3.4.4
 
 ## 環境構築
 ### envファイルの作成
