@@ -45,7 +45,10 @@ const Index = () => {
 					<tbody>
 						{todos?.map((todo) => {
 							return (
-								<tr className="bg-white border-b dark:bg-cyan-800 dark:border-cyan-700">
+								<tr
+									className="bg-white border-b dark:bg-cyan-800 dark:border-cyan-700"
+									key={todo.id}
+								>
 									<th
 										scope="row"
 										className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white"
@@ -66,9 +69,9 @@ const Index = () => {
 											>
 												<path
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
 													d="M5 11.917 9.724 16.5 19 7.5"
 												/>
 											</svg>
@@ -85,9 +88,9 @@ const Index = () => {
 											>
 												<path
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
 													d="M5 11.917 9.724 16.5 19 7.5"
 												/>
 											</svg>
