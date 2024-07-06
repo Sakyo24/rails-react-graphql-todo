@@ -1,6 +1,6 @@
 main {
   min-height: calc(100vh - 43px);
 }
-main > div {
+.top-page {
   min-height: calc(100vh - 107px);
 }
