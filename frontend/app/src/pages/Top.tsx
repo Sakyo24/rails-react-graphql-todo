@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Top = () => {
 	return (
-		<div className="text-center flex items-center">
+		<div className="top-page text-center flex items-center">
 			<div className="w-screen text-5xl">
 				<p className="text-cyan-400">
 					Ruby on Rails × React × GraphQL TODOアプリ
