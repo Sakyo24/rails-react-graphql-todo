@@ -1,0 +1,11 @@
+overwrite: true
+# schema: "http://localhost:3001/graphql"
+schema: "./schema.json"
+generates:
+  src/gql/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+    config:
+      scalars:
+        ISO8601DateTime: string
