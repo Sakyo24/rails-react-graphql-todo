@@ -60,6 +60,11 @@ $ bundle exec ridgepole --config config/database.yml --env development --file db
 $ bundle exec rails db:seed
 ```
 
+schema.graphql・schema.jsonの更新
+```
+$ bundle exec rake graphql:schema:dump
+```
+
 ### フロントエンド
 frontコンテナにアクセス
 ```
@@ -81,5 +86,11 @@ npm run dev
 npm run build
 ```
 
+graphql.tsの更新
+```
+npm run codegen
+```
+
 ### ブラウザ
 トップページ：http://localhost:3000 <br>
+GraphQL Playground：http://localhost:3001/graphiql
