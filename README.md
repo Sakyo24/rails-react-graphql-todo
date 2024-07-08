@@ -26,7 +26,7 @@ touch master.key
 ```
 master.keyファイルの記述内容は、管理者に問い合わせる
 
-### Dockerコンテナ　ビルド・起動・アクセス
+### Dockerコンテナ　ビルド・起動
 rails-react-graphql-todoディレクトリ直下で、下記コマンドを実行する。<br>
 
 コンテナのビルド
@@ -58,6 +58,16 @@ $ bundle exec ridgepole --config config/database.yml --env development --file db
 シーダーの実行
 ```
 $ bundle exec rails db:seed
+```
+
+rubocopの実行
+```
+$ bundle exec rubocop
+```
+
+rubocopの実行 + 自動修正
+```
+$ bundle exec rubocop -A
 ```
 
 schema.graphql・schema.jsonの更新
