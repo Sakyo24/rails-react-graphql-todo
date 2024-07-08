@@ -14,9 +14,9 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-const App = () => {
+const App: React.FC = () => {
 	return (
-		<ApolloProvider client={client} >
+		<ApolloProvider client={client}>
 			<BrowserRouter>
 				<Header />
 				<main className="pt-16">
