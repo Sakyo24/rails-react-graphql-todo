@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom"
 
-const Header = () => {
-  return (
+const Header: React.FC = () => {
+	return (
 		<header className="bg-white border-b border-gray-200 fixed z-30 w-full">
 			<div className="px-3 py-3 lg:px-5 lg:pl-3">
 				<div className="flex items-center justify-between">
-					<Link
-						to="/"
-						className="flex items-center justify-start"
-					>
+					<Link to="/" className="flex items-center justify-start">
 						<h1 className="font-bold text-xl ">
 							Ruby on Rails × React × GraphQL TODOアプリ
 						</h1>
@@ -31,6 +28,6 @@ const Header = () => {
 			</div>
 		</header>
 	);
-}
+};
 
 export default Header

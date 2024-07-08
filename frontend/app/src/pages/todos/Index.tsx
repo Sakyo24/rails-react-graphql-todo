@@ -16,7 +16,7 @@ const GET_TODOS = gql`
 	}
 `;
 
-const Index = () => {
+const Index: React.FC = () => {
 	const { loading, error, data } = useQuery<{ todos: Todo[] }>(GET_TODOS);
 
 	return (

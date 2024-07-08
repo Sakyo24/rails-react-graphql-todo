@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Top = () => {
+const Top: React.FC = () => {
 	return (
 		<div className="top-page text-center flex items-center">
 			<div className="w-screen text-5xl">
