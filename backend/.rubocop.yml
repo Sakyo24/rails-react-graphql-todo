@@ -1,0 +1,108 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+Rails:
+  Enabled: true
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - "bin/**/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "log/**/*"
+    - "public/**/*"
+    - "storage/**/*"
+    - "test/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "config.ru"
+    - "Gemfile"
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+
+# Gem　アルファベット順
+Bundler/OrderedGems:
+  Enabled: false
+
+# ガード節の後には空行が必要
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+  Exclude:
+    - "app/controllers/graphql_controller.rb"
+
+# 複数行に関する整形
+Layout/HashAlignment:
+  Enabled: false
+
+# 1行の最大文字数
+Layout/LineLength:
+  Max: 150
+
+# 使用していない関数の引数の検知
+Lint/UnusedMethodArgument:
+  Enabled: true
+  Exclude:
+    - "app/graphql/api_schema.rb"
+
+# 使用していない関数の検知
+Lint/UselessMethodDefinition:
+  Enabled: true
+  Exclude:
+    - "app/graphql/api_schema.rb"
+
+# 関数の最大行数
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+# クラスの最大行数
+Metrics/ClassLength:
+  CountComments: false
+  Max: 150
+
+# モジュールの最大行数
+Metrics/ModuleLength:
+  CountComments: false
+  Max: 150
+
+# メソッドパラメータ名の最小文字数を設定
+Naming/MethodParameterName:
+  MinNameLength: 1
+
+# httpのstatusを数値ではなく、文字列で記述
+Rails/HttpStatus:
+  Enabled: true
+  Exclude:
+    - "app/controllers/graphql_controller.rb"
+
+# 日本語でのコメント可否
+Style/AsciiComments:
+  Enabled: false
+
+# ドキュメントの無いpublic classを許可
+Style/Documentation:
+  Enabled: false
+
+# frozen_string_literal: true　記述の必要の有無
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 配列の最後にハッシュを置くべきかどうかをチェック
+Style/HashAsLastArrayItem:
+  Enabled: false
+
+# ハッシュのキーと値が同じ場合は、省略すべか否か
+Style/HashSyntax:
+  Enabled: false
+
+# 変数展開などの特別な理由がなく、ダブルクォートを使っていないかのチェック
+Style/StringLiterals:
+  Enabled: false
