@@ -51,6 +51,7 @@ Lint/UnusedMethodArgument:
   Enabled: true
   Exclude:
     - "app/graphql/api_schema.rb"
+    - "app/graphql/offset_encoder.rb"
 
 # 使用していない関数の検知
 Lint/UselessMethodDefinition:
