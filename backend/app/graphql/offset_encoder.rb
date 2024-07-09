@@ -1,9 +1,9 @@
 module OffsetEncoder
-  def self.encode(txt, _nonce: false)
+  def self.encode(txt, nonce: false)
     txt
   end
 
-  def self.decode(txt, _nonce: false)
+  def self.decode(txt, nonce: false)
     txt
   end
 end
