@@ -10,6 +10,31 @@ type Mutation {
   testField: String!
 }
 
+"""
+Information about pagination in a connection.
+"""
+type PageInfo {
+  """
+  When paginating forwards, the cursor to continue.
+  """
+  endCursor: String
+
+  """
+  When paginating forwards, are there more items?
+  """
+  hasNextPage: Boolean!
+
+  """
+  When paginating backwards, are there more items?
+  """
+  hasPreviousPage: Boolean!
+
+  """
+  When paginating backwards, the cursor to continue.
+  """
+  startCursor: String
+}
+
 type Query {
   """
   An example field added by the generator
@@ -19,7 +44,27 @@ type Query {
   """
   Find todos
   """
-  todos: [Todo!]!
+  todos(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): TodoConnection!
 }
 
 type Todo {
@@ -30,4 +75,40 @@ type Todo {
   isDone: Boolean!
   title: String!
   updatedAt: ISO8601DateTime!
+}
+
+"""
+The connection type for Todo.
+"""
+type TodoConnection {
+  """
+  A list of edges.
+  """
+  edges: [TodoEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Todo]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type TodoEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Todo
 }
