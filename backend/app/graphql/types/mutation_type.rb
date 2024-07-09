@@ -10,5 +10,6 @@ module Types
     end
 
     # field :create_todo, mutation: Mutations::CreateTodo
+    field :update_todo, mutation: Mutations::UpdateTodo
   end
 end

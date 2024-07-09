@@ -1,11 +1,12 @@
 import "./App.css";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Register from "./pages/Register";
-import TodosIndex from "./pages/todos/Index";
 import Top from "./pages/Top";
+import TodosIndex from "./pages/todos/Index";
+import TodosEdit from "./pages/todos/Edit";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
 						<Route path="/register" element={<Register />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/todos" element={<TodosIndex />} />
+						<Route path="/todos/:id/edit" element={<TodosEdit />} />
 						<Route path="/" element={<Top />} />
 						<Route path="/*" element={<NotFound />} />
 					</Routes>
