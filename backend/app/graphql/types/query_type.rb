@@ -29,6 +29,6 @@ module Types
     end
 
     field :todos, resolver: Resolvers::TodosResolver
-    # field :todo, resolver: Resolvers::TodoResolver
+    field :todo, resolver: Resolvers::TodoResolver
   end
 end

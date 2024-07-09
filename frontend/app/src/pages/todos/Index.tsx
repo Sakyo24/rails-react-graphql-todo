@@ -168,7 +168,7 @@ const Index: React.FC = () => {
 											</td>
 											<td className="px-6 py-4 flex">
 												<Link
-													to="#"
+													to={`/todos/${todo.id}/edit`}
 													className="ml-5 sm:inline-flex text-white bg-green-400 hover:bg-green-300 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center cursor-pointer"
 												>
 													編集
