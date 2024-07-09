@@ -1,4 +1,4 @@
-10.times do |n|
+300.times do |n|
   Todo.create!(
     title: "テストTODO#{n + 1}",
     detail: "テストTODO#{n + 1}の詳細です。",

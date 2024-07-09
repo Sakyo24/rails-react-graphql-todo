@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApiSchema < GraphQL::Schema
+  include OffsetEncoder
+
   mutation(Types::MutationType)
   query(Types::QueryType)
 
@@ -28,6 +30,8 @@ class ApiSchema < GraphQL::Schema
 
   # Stop validating when it encounters this many errors:
   validate_max_errors(100)
+
+  cursor_encoder(OffsetEncoder)
 
   # Relay-style Object Identification:
 

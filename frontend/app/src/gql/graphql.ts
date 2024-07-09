@@ -21,12 +21,33 @@ export type Mutation = {
   testField: Scalars['String']['output'];
 };
 
+/** Information about pagination in a connection. */
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   /** An example field added by the generator */
   testField: Scalars['String']['output'];
   /** Find todos */
-  todos: Array<Todo>;
+  todos: TodoConnection;
+};
+
+
+export type QueryTodosArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type Todo = {
@@ -38,4 +59,25 @@ export type Todo = {
   isDone: Scalars['Boolean']['output'];
   title: Scalars['String']['output'];
   updatedAt: Scalars['ISO8601DateTime']['output'];
+};
+
+/** The connection type for Todo. */
+export type TodoConnection = {
+  __typename?: 'TodoConnection';
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<TodoEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<Todo>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+/** An edge in a connection. */
+export type TodoEdge = {
+  __typename?: 'TodoEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node?: Maybe<Todo>;
 };
