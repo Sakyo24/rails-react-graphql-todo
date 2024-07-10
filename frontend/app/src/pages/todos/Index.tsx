@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import { GET_TODOS } from "../../gql/queries/todosQueries";
-import { Todo } from "../../gql/graphql";
+import { DELETE_TODO } from "../../gql/mutations/todosMutations";
+import { Todo, DeleteTodoInput } from "../../gql/graphql";
 
 const Index: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState<number>(1);
@@ -29,6 +30,8 @@ const Index: React.FC = () => {
 		}
 	);
 
+	const [deleteTodo] = useMutation<{ id: string }>(DELETE_TODO, {});
+
 	useEffect(() => {
 		if (!loading && !error && data) {
 			setTotalPage(Math.ceil(data.todos.totalCount / 10));
@@ -41,12 +44,29 @@ const Index: React.FC = () => {
 			array.push(i);
 		}
 		setPageNumbers(array);
-
 	}, [totalPage]);
 
 	const handleToPage = (page: number) => {
 		if (page === 0 || page === totalPage + 1) return;
 		setCurrentPage(page);
+	};
+
+	const handleDeleteTodo = async (id: string) => {
+		if (!confirm("削除しても宜しいでしょうか？")) return;
+
+		const deleteTodoInput: DeleteTodoInput = {
+			id: id,
+		};
+
+		try {
+			await deleteTodo({
+				variables: { deleteTodoInput },
+				refetchQueries: [GET_TODOS],
+			});
+			alert("削除しました。");
+		} catch (error: unknown) {
+			alert("削除処理に失敗しました。");
+		}
 	};
 
 	return (
@@ -161,12 +181,12 @@ const Index: React.FC = () => {
 												>
 													編集
 												</Link>
-												<Link
-													to="#"
+												<div
+													onClick={() => handleDeleteTodo(todo.id)}
 													className="ml-5 sm:inline-flex text-white bg-red-400 hover:bg-red-300 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center cursor-pointer"
 												>
 													削除
-												</Link>
+												</div>
 											</td>
 										</tr>
 									);
