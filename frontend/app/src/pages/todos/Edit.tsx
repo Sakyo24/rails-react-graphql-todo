@@ -1,37 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
+import { GET_TODO } from "../../gql/queries/todosQueries";
+import { UPDATE_TODO } from "../../gql/mutations/todosMutations";
 import type { Todo, UpdateTodoInput } from "../../gql/graphql";
-
-const GET_TODO = gql`
-	query getTodo($id: ID!) {
-		todo(id: $id) {
-			id
-			title
-			detail
-			isDone
-			createdAt
-			updatedAt
-		}
-	}
-`;
-
-const UPDATE_TODO = gql`
-	mutation updateTodo($updateTodoInput: UpdateTodoInput!) {
-		updateTodo(input: $updateTodoInput) {
-			todo {
-				id
-				title
-				detail
-				isDone
-				createdAt
-				updatedAt
-			}
-		}
-	}
-`;
 
 const Edit: React.FC = () => {
 	const { id } = useParams();
@@ -72,7 +46,6 @@ const Edit: React.FC = () => {
 			detail,
 			isDone,
 		};
-		console.log(updateTodoInput);
 
 		try {
 			await updateTodo({
