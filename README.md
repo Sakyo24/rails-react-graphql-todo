@@ -55,6 +55,11 @@ $ bundle install
 $ bundle exec ridgepole --config config/database.yml --env development --file db/Schemafile --apply
 ```
 
+テストテーブルの作成
+```
+$ bundle exec ridgepole --config config/database.yml --env test --file db/Schemafile --apply
+```
+
 シーダーの実行
 ```
 $ bundle exec rails db:seed
@@ -68,6 +73,11 @@ $ bundle exec rubocop
 rubocopの実行 + 自動修正
 ```
 $ bundle exec rubocop -A
+```
+
+rspecの実行
+```
+$ bundle exec rspec
 ```
 
 schema.graphql・schema.jsonの更新
