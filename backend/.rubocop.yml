@@ -107,3 +107,21 @@ Style/HashSyntax:
 # 変数展開などの特別な理由がなく、ダブルクォートを使っていないかのチェック
 Style/StringLiterals:
   Enabled: false
+
+#################### RSpec ####################
+
+# 英語を前提としたcontextの説明文の制限を無効化する
+RSpec/ContextWording:
+  Enabled: false
+
+# 1つのテストケースあたりの行数
+RSpec/ExampleLength:
+  Enabled: false
+
+# 1つのテストケースあたりのアサーションの数
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# letの定義回数の上限
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
