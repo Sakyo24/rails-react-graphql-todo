@@ -4,7 +4,7 @@ module Resolvers
     type Types::ObjectTypes::TodoType.connection_type, null: false
 
     def resolve
-      Todo.all
+      Todo.order(created_at: :desc).all
     end
   end
 end

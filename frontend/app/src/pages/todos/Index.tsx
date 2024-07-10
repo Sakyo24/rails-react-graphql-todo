@@ -1,31 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
+import { GET_TODOS } from "../../gql/queries/todosQueries";
 import { Todo } from "../../gql/graphql";
-
-const GET_TODOS = gql`
-	query getTodos($after: String!) {
-		todos(first: 10, after: $after) {
-			nodes {
-				id
-				title
-				detail
-				isDone
-				createdAt
-				updatedAt
-			}
-			pageInfo {
-				endCursor
-				hasNextPage
-				startCursor
-				hasPreviousPage
-			}
-			totalCount
-		}
-	}
-`;
 
 const Index: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState<number>(1);
@@ -52,7 +31,7 @@ const Index: React.FC = () => {
 
 	useEffect(() => {
 		if (!loading && !error && data) {
-			setTotalPage(data.todos.totalCount / 10);
+			setTotalPage(Math.ceil(data.todos.totalCount / 10));
 		}
 	}, [loading, error, data]);
 
@@ -77,6 +56,15 @@ const Index: React.FC = () => {
 
 			{!loading && !error && (
 				<div>
+					<div className="mt-10 mb-5 text-center">
+						<Link
+							to="/todos/create"
+							className="inline-block text-white bg-blue-400 hover:bg-blue-300 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center cursor-pointer w-6/12 mx-auto"
+						>
+							新規登録
+						</Link>
+					</div>
+
 					<div className="mb-5 max-w-screen-2xl mx-auto w-10/12">
 						{data?.todos?.totalCount} 件
 					</div>
