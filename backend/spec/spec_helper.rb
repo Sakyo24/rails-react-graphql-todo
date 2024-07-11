@@ -13,6 +13,21 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'simplecov'
+
+# - カバレッジが75%未満の場合、non-zero exit する
+SimpleCov.minimum_coverage 75
+# - カバレッジが75%未満のファイルがあった場合、non-zero exit する
+SimpleCov.minimum_coverage_by_file 75
+
+SimpleCov.start do
+  add_filter '/app/controllers/'
+  add_filter '/config/'
+  add_filter '/db/'
+  add_filter '/spec/'
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
