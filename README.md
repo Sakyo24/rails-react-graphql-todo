@@ -31,12 +31,12 @@ rails-react-graphql-todoディレクトリ直下で、下記コマンドを実�
 
 コンテナのビルド
 ```
-docker-compose build
+docker compose build
 ```
 
 コンテナの起動
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 ### バックエンド
