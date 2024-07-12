@@ -7,9 +7,8 @@ module Mutations
 
     def resolve(**args)
       todo = Todo.create!(args)
-      {
-        todo: todo
-      }
+
+      { todo: todo }
     end
   end
 end
