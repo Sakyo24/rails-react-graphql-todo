@@ -23,6 +23,9 @@ SimpleCov.minimum_coverage_by_file 75
 
 SimpleCov.start do
   add_filter '/app/controllers/'
+  add_filter '/app/graphql/types/'
+  add_filter '/app/graphql/api_schema.rb'
+  add_filter '/app/graphql/offset_encoder.rb'
   add_filter '/config/'
   add_filter '/db/'
   add_filter '/spec/'
