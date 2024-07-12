@@ -48,6 +48,9 @@ jobs:
       - name: RuboCop
         run: bundle exec rubocop
 
+      - name: Database create
+        run: bundle exec rails db:create RAILS_ENV=test
+
       - name: migrate
         run: bundle exec ridgepole --config config/database.yml --env test --file db/Schemafile --apply
 
